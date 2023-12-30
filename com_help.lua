@@ -6,7 +6,7 @@ local enable_autoupdate = true -- false to disable auto-update + disable sending
 local autoupdate_loaded = false
 local Update = nil
 if enable_autoupdate then
-    local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџС‹С‚Р°СЋСЃСЊ РѕР±РЅРѕРІРёС‚СЊСЃСЏ c '..thisScript().version..' РЅР° '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('Р—Р°РіСЂСѓР¶РµРЅРѕ %d РёР· %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('Р—Р°РіСЂСѓР·РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°.')sampAddChatMessage(b..'РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРѕС€Р»Рѕ РЅРµСѓРґР°С‡РЅРѕ. Р—Р°РїСѓСЃРєР°СЋ СѓСЃС‚Р°СЂРµРІС€СѓСЋ РІРµСЂСЃРёСЋ..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': РћР±РЅРѕРІР»РµРЅРёРµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, РІС‹С…РѕРґРёРј РёР· РѕР¶РёРґР°РЅРёСЏ РїСЂРѕРІРµСЂРєРё РѕР±РЅРѕРІР»РµРЅРёСЏ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..c)end end}]])
+    local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'Обнаружено обновление. Пытаюсь обновиться c '..thisScript().version..' на '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('Загружено %d из %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('Загрузка обновления завершена.')sampAddChatMessage(b..'Обновление завершено!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'Обновление прошло неудачно. Запускаю устаревшую версию..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': Обновление не требуется.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, выходим из ожидания проверки обновления. Смиритесь или проверьте самостоятельно на '..c)end end}]])
     if updater_loaded then
         autoupdate_loaded, Update = pcall(Updater)
         if autoupdate_loaded then
@@ -67,9 +67,9 @@ function main()
 	sampRegisterChatCommand("nrpaks", nrpaks)
 	sampRegisterChatCommand("chelp", chelp)
 	wait(500)
-	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!", -1)
-	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - {f09205}/chelp", -1)
-	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ {f09205}Aries RolePlay", -1)
+	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF} !", -1)
+	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - {f09205}/chelp", -1)
+	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   {f09205}Aries RolePlay", -1)
 	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}Version: {f09205}1.0.3", -1)
 	while true do
 		wait(0)
@@ -78,7 +78,7 @@ end
 
 function dm(id)
 if tonumber(id) == nil then
-		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /dm [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /dm [ID ].", -1)
 	else
 		sampSendChat("/prison "..id.." 60 DeathMatch")
 	end
@@ -86,7 +86,7 @@ end
 
 function dmgz(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /dmgz [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /dmgz [ID ].", -1)
 		else
 			sampSendChat("/prison "..id.." 100 DeathMatch in GZ")
 		end
@@ -94,7 +94,7 @@ function dmgz(id)
 
 function db(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /db [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /db [ID ].", -1)
 		else
 			sampSendChat("/prison "..id.." 60 DriveBy")
 		end
@@ -102,7 +102,7 @@ function db(id)
 
 function sk(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /sk [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /sk [ID ].", -1)
 		else
 			sampSendChat("/prison "..id.." 60 SpawnKill")
 		end
@@ -110,7 +110,7 @@ function sk(id)
 
 function rk(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /rk [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /rk [ID ].", -1)
 		else
 			sampSendChat("/prison "..id.." 40 RevengeKill")
 		end
@@ -118,7 +118,7 @@ function rk(id)
 
 function tk(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /tk [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /tk [ID ].", -1)
 		else
 			sampSendChat("/prison "..id.." 60 TeamKill")
 		end
@@ -126,7 +126,7 @@ function tk(id)
 
 function pg(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /pg [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /pg [ID ].", -1)
 		else
 			sampSendChat("/prison "..id.." 30 PowerGaming")
 		end
@@ -134,23 +134,23 @@ function pg(id)
 
 function nrpoved(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /nrpoved [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /nrpoved [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 NRP пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 60 NRP ")
 		end
 	end
 
 function sbivt(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /sbivt [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /sbivt [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 10  . ")
 		end
 	end
 
 function dmgetto(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /dmgetto [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /dmgetto [ID ].", -1)
 		else
 		    sampSendChat("/prison "..id.." 80 DeathMatch in Getto")
 		end
@@ -158,201 +158,201 @@ function dmgetto(id)
 
 function dmslet(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /dmslet [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /dmslet [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 200 DeathMatch пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 200 DeathMatch  ")
 		end
 	end
 
 function ezda(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /ezda [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /ezda [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ")
+			sampSendChat("/prison "..id.." 10   ")
 		end
 	end
 
 function copgetto(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /copgetto [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /copgetto [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 пїЅпїЅпїЅ пїЅ Getto")
+			sampSendChat("/prison "..id.." 60   Getto")
 		end
 	end
 
 function offar(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /offar [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /offar [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 80 пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 80   ")
 		end
 	end
 
 function offkill(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /offkill [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /offkill [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 80 пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 80   ")
 		end
 	end
 
 function sbivstena(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /sbivstena [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /sbivstena [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 30    ")
 		end
 	end
 
 function sbivplayer(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ + Warn - /sbivplayer [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   + Warn - /sbivplayer [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
-			sampSendChat("/warn "..id.."  пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 120  ")
+			sampSendChat("/warn "..id.."   ")
 		end
 	end
 
 function otvod(id)
 	if tonumber(id) == nil then
-		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ + Warn - /otvod [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   + Warn - /otvod [ID ].", -1)
 	else
-		sampSendChat("/prison "..id.." 120 пїЅпїЅпїЅпїЅпїЅпїЅ")
-		sampSendChat("/warn "..id.."  пїЅпїЅпїЅпїЅпїЅпїЅ")
+		sampSendChat("/prison "..id.." 120 ")
+		sampSendChat("/warn "..id.."  ")
 	end
 end
 
 function nrpcop(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /nrpcop [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /nrpcop [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 пїЅпїЅпїЅ пїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 120  ")
 		end
 	end
 
 function dbkov(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /dbvok [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /dbvok [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 360 DriveBy пїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 360 DriveBy /")
 		end
 	end
 
 function sbivap(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /sbivap [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /sbivap [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 10  ")
 		end
 	end
 
 function sbivtemp(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /sbivtemp [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /sbivtemp [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 30  ")
 		end
 	end
 
 function ignor(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /ignor [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /ignor [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 пїЅпїЅпїЅпїЅпїЅ RP пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 60  RP ")
 		end
 	end
 
 function ignorpr(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /ignorpr [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /ignorpr [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 60   ")
 		end
 	end
 
 function nrpcm(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /nrpcm [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /nrpcm [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 пїЅпїЅпїЅ /cput - /mboot")
+			sampSendChat("/prison "..id.." 120  /cput - /mboot")
 		end
 	end
 
 function giftch(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /giftch [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /giftch [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 gift пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 120 gift  ")
 		end
 	end
 
 function massnrp(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ + Warn - /massnrp [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   + Warn - /massnrp [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ")
-			sampSendChat("/warn "..id.."  пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 120 . ")
+			sampSendChat("/warn "..id.."  . ")
 		end
 	end
 
 function stpas(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /stpas [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /stpas [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 30   ")
 		end
 	end
 
 function spyo(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /spyo [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /spyo [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 /spy пїЅ пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 10 /spy  . ")
 		end
 	end
 
 function prov(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /prov [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /prov [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 10 ")
 		end
 	end
 
 function animsl(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /animsl [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /animsl [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 15 /anim пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 15 /anim  ")
 		end
 	end
 
 function massdm(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /massdm [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /massdm [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 360 пїЅпїЅпїЅпїЅ. DeathMatch")
+			sampSendChat("/prison "..id.." 360 . DeathMatch")
 		end
 	end
 
 function massdb(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /massdb [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /massdb [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 360 пїЅпїЅпїЅпїЅ. DriveBy")
+			sampSendChat("/prison "..id.." 360 . DriveBy")
 		end
 	end
 
 function nrpaks(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /nrpaks [ID пїЅпїЅпїЅпїЅпїЅпїЅ].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}   - /nrpaks [ID ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 NRp пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+			sampSendChat("/prison "..id.." 30 NRp ")
 		end
 	end
 
 function chelp()
-	sampShowDialog(1338, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ", "{f00592}1.{FFFFFF} пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Prison\n{f00592}2.{FFFFFF} пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Mute\n{f00592}3.{FFFFFF} пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Warn\n{f00592}4.{FFFFFF} пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Ban\n{f00592}5.{FFFFFF} пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n{f00592}6.{FFFFFF} пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 2)
+	sampShowDialog(1338, "  ", "{f00592}1.{FFFFFF}   Prison\n{f00592}2.{FFFFFF}   Mute\n{f00592}3.{FFFFFF}   Warn\n{f00592}4.{FFFFFF}   Ban\n{f00592}5.{FFFFFF}   \n{f00592}6.{FFFFFF}  ", "", "", 2)
 	lua_thread.create(commandhelp)
 end
 
@@ -361,22 +361,22 @@ function commandhelp()
 		wait(0)
 		local result, button, list, input = sampHasDialogRespond(1338)
 		if result and list == 0 and button == 1 then
-			sampShowDialog(1339, "пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Prison", "/dm - DeathMatch\n/db - DriveBy\n/dmgz - DeathMatch in GZ\n/sk - SpawnKill\n/rk - RevengeKill\n/tk - TeamKill\n/pg - PowerGaming\n/nrpoved - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n/sbivt - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ\n/dmgetto - пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ\n/dmslet - пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ\n/ezda - пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ\n/copgetto - пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ\n/offar - пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\n/offkill - пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ(пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ, пїЅпїЅ пїЅ пїЅпїЅ)\n/sbivstena - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ\n/sbivplayer - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n/otvod - пїЅпїЅпїЅпїЅпїЅпїЅ(prison + warn)\n/nrpcop - пїЅпїЅпїЅ пїЅпїЅпїЅ\n/dbkov - пїЅпїЅ пїЅпїЅпїЅпїЅ / пїЅпїЅпїЅпїЅпїЅ\n/sbivap - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\n/sivtemp - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ\n/ignor - пїЅпїЅпїЅпїЅпїЅ RP пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n/ignorpr - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\n/nrpcm - пїЅпїЅпїЅ /mboot пїЅ /cput\n/giftch - пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n/massnrp - пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ (prison + warn)\n/stpas - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n/spyo - /spy пїЅ пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ\n/prov - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n/animsl - /anim пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ\n/massdm - пїЅпїЅпїЅпїЅ. пїЅпїЅ\n/massdb - пїЅпїЅпїЅпїЅ. пїЅпїЅ\n/nrpaks - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 2)
+			sampShowDialog(1339, ".    Prison", "/dm - DeathMatch\n/db - DriveBy\n/dmgz - DeathMatch in GZ\n/sk - SpawnKill\n/rk - RevengeKill\n/tk - TeamKill\n/pg - PowerGaming\n/nrpoved -  \n/sbivt -  . \n/dmgetto -   \n/dmslet -   \n/ezda -   \n/copgetto -   \n/offar -   \n/offkill -   (  ,   )\n/sbivstena -    \n/sbivplayer -  \n/otvod - (prison + warn)\n/nrpcop -  \n/dbkov -   / \n/sbivap -  \n/sivtemp -  \n/ignor -  RP \n/ignorpr -   \n/nrpcm -  /mboot  /cput\n/giftch -   \n/massnrp - .  (prison + warn)\n/stpas -   \n/spyo - /spy  . \n/prov - \n/animsl - /anim  \n/massdm - . \n/massdb - . \n/nrpaks -  ", "", "", 2)
 			lua_thread.create(noper)
 		elseif result and list == 1 and button == 1 then
-			sampShowDialog(1339, "пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Mute", "SpawnKill - /sk\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - /npvch\nPoweGaming - /pg\nDeathMatch - /dm\nDeathMatch in GreenZone - /dmzz\nNonRP PD - /ncop\n+C пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - /cw\nпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /asbiv\nCop in Ghetto - /copg\nTeamKill - /tk\nDriveBy - /db", "пїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 2)
+			sampShowDialog(1339, ".    Mute", "SpawnKill - /sk\n      - /npvch\nPoweGaming - /pg\nDeathMatch - /dm\nDeathMatch in GreenZone - /dmzz\nNonRP PD - /ncop\n+C   - /cw\n  - /asbiv\nCop in Ghetto - /copg\nTeamKill - /tk\nDriveBy - /db", "", "", 2)
 			lua_thread.create(noper)
 		elseif result and list == 2 and button == 1 then
-			sampShowDialog(1339, "пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Warn", "NonRP /tie - /ntie", "пїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 2)
+			sampShowDialog(1339, ".    Warn", "NonRP /tie - /ntie", "", "", 2)
 			lua_thread.create(noper)
 		elseif result and list == 3 and button == 1 then
-			sampShowDialog(1339, "пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Ban", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /oskr\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - /oskp\nпїЅпїЅпїЅпїЅ - /cheats", "пїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 2)
+			sampShowDialog(1339, ".    Ban", "  - /oskr\n  - /oskp\n - /cheats", "", "", 2)
 			lua_thread.create(noper)
 		elseif result and list == 4 and button == 1 then
-			sampShowDialog(1339, "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ - /gh\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - /ss\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ - /ghc", "пїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 2)
+			sampShowDialog(1339, " . ", "    - /gh\n  - /ss\n    - /ghc", "", "", 2)
 			lua_thread.create(noper)
 		elseif result and list == 5 and button == 1 then
-			sampShowDialog(1339, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - {FF0000}Tom Costa\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - {ff007b}Hiroshi Miyazaki\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - {f00592}Aries RP Mobile.\nпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - vk.com/himoore", "пїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 2)
+			sampShowDialog(1339, "  ", "  - {FF0000}Tom Costa\n ,    - {ff007b}Hiroshi Miyazaki\n   - {f00592}Aries RP Mobile.\n ,     - vk.com/himoore", "", "", 2)
 			lua_thread.create(noper)
 		end
 	end
