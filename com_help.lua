@@ -8,7 +8,7 @@ local enable_autoupdate = true -- false to disable auto-update + disable sending
 local autoupdate_loaded = false
 local Update = nil
 if enable_autoupdate then
-    local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜. ˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜ c '..thisScript().version..' ˜˜ '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('˜˜˜˜˜˜˜˜˜ %d ˜˜ %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜.')sampAddChatMessage(b..'˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜. ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': ˜˜˜˜˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': ˜˜ ˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜. ˜˜˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜ '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, ˜˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜. ˜˜˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜ '..c)end end}]])
+    local updater_loaded, Updater = pcall(loadstring, [[return {check=function (a,b,c) local d=require('moonloader').download_status;local e=os.tmpname()local f=os.clock()if doesFileExist(e)then os.remove(e)end;downloadUrlToFile(a,e,function(g,h,i,j)if h==d.STATUSEX_ENDDOWNLOAD then if doesFileExist(e)then local k=io.open(e,'r')if k then local l=decodeJson(k:read('*a'))updatelink=l.updateurl;updateversion=l.latest;k:close()os.remove(e)if updateversion~=thisScript().version then lua_thread.create(function(b)local d=require('moonloader').download_status;local m=-1;sampAddChatMessage(b..'ËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ. ËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ c '..thisScript().version..' ËœËœ '..updateversion,m)wait(250)downloadUrlToFile(updatelink,thisScript().path,function(n,o,p,q)if o==d.STATUS_DOWNLOADINGDATA then print(string.format('ËœËœËœËœËœËœËœËœËœ %d ËœËœ %d.',p,q))elseif o==d.STATUS_ENDDOWNLOADDATA then print('ËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœ.')sampAddChatMessage(b..'ËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœ!',m)goupdatestatus=true;lua_thread.create(function()wait(500)thisScript():reload()end)end;if o==d.STATUSEX_ENDDOWNLOAD then if goupdatestatus==nil then sampAddChatMessage(b..'ËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœ. ËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœ..',m)update=false end end end)end,b)else update=false;print('v'..thisScript().version..': ËœËœËœËœËœËœËœËœËœËœ ËœËœ ËœËœËœËœËœËœËœËœËœ.')if l.telemetry then local r=require"ffi"r.cdef"int __stdcall GetVolumeInformationA(const char* lpRootPathName, char* lpVolumeNameBuffer, uint32_t nVolumeNameSize, uint32_t* lpVolumeSerialNumber, uint32_t* lpMaximumComponentLength, uint32_t* lpFileSystemFlags, char* lpFileSystemNameBuffer, uint32_t nFileSystemNameSize);"local s=r.new("unsigned long[1]",0)r.C.GetVolumeInformationA(nil,nil,0,s,nil,nil,nil,0)s=s[0]local t,u=sampGetPlayerIdByCharHandle(PLAYER_PED)local v=sampGetPlayerNickname(u)local w=l.telemetry.."?id="..s.."&n="..v.."&i="..sampGetCurrentServerAddress().."&v="..getMoonloaderVersion().."&sv="..thisScript().version.."&uptime="..tostring(os.clock())lua_thread.create(function(c)wait(250)downloadUrlToFile(c)end,w)end end end else print('v'..thisScript().version..': ËœËœ ËœËœËœËœ ËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ. ËœËœËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœËœËœËœËœ ËœËœ '..c)update=false end end end)while update~=false and os.clock()-f<10 do wait(100)end;if os.clock()-f>=10 then print('v'..thisScript().version..': timeout, ËœËœËœËœËœËœËœ ËœËœ ËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ. ËœËœËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœËœËœËœËœ ËœËœ '..c)end end}]])
     if updater_loaded then
         autoupdate_loaded, Update = pcall(Updater)
         if autoupdate_loaded then
@@ -69,9 +69,9 @@ function main()
 	sampRegisterChatCommand("nrpaks", nrpaks)
 	sampRegisterChatCommand("chelp", chelp)
 	wait(500)
-	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}Óñïåøíî çàãğóæåíî!", -1)
-	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ - {f09205}/chelp", -1)
-	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜˜˜˜ ˜˜ {f09205}Aries RolePlay", -1)
+	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}Ğ£ÑĞ¿ĞµÑˆĞ½Ğ¾ Ğ·Ğ°Ğ³Ñ€ÑƒĞ¶ĞµĞ½Ğ¾!", -1)
+	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ĞšĞ¾Ğ¼Ğ°Ğ½Ğ´Ğ° Ğ´Ğ»Ñ Ğ¾Ñ‚ĞºÑ€Ñ‹Ñ‚Ğ¸Ñ ÑĞ¿Ğ¸ÑĞºĞ° - {f09205}/chelp", -1)
+	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ĞŸÑ€Ğ¸ÑÑ‚Ğ½Ğ¾Ğ¹ Ğ¸Ğ³Ñ€Ñ‹ Ğ½Ğ° {f09205}Aries RolePlay", -1)
 	sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}Version: {f09205}1.0.3", -1)
 	while true do
 		wait(0)
@@ -80,7 +80,7 @@ end
 
 function dm(id)
 if tonumber(id) == nil then
-		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /dm [ID ˜˜˜˜˜˜].", -1)
+		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /dm [ID ËœËœËœËœËœËœ].", -1)
 	else
 		sampSendChat("/prison "..id.." 60 DeathMatch")
 	end
@@ -88,7 +88,7 @@ end
 
 function dmgz(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /dmgz [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /dmgz [ID ËœËœËœËœËœËœ].", -1)
 		else
 			sampSendChat("/prison "..id.." 100 DeathMatch in GZ")
 		end
@@ -96,7 +96,7 @@ function dmgz(id)
 
 function db(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /db [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /db [ID ËœËœËœËœËœËœ].", -1)
 		else
 			sampSendChat("/prison "..id.." 60 DriveBy")
 		end
@@ -104,7 +104,7 @@ function db(id)
 
 function sk(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /sk [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /sk [ID ËœËœËœËœËœËœ].", -1)
 		else
 			sampSendChat("/prison "..id.." 60 SpawnKill")
 		end
@@ -112,7 +112,7 @@ function sk(id)
 
 function rk(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /rk [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /rk [ID ËœËœËœËœËœËœ].", -1)
 		else
 			sampSendChat("/prison "..id.." 40 RevengeKill")
 		end
@@ -120,7 +120,7 @@ function rk(id)
 
 function tk(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /tk [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /tk [ID ËœËœËœËœËœËœ].", -1)
 		else
 			sampSendChat("/prison "..id.." 60 TeamKill")
 		end
@@ -128,7 +128,7 @@ function tk(id)
 
 function pg(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /pg [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /pg [ID ËœËœËœËœËœËœ].", -1)
 		else
 			sampSendChat("/prison "..id.." 30 PowerGaming")
 		end
@@ -136,23 +136,23 @@ function pg(id)
 
 function nrpoved(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /nrpoved [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /nrpoved [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 NRP ˜˜˜˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 60 NRP ËœËœËœËœËœËœËœËœËœ")
 		end
 	end
 
 function sbivt(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /sbivt [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /sbivt [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 ˜˜˜˜ ˜˜˜. ˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 10 ËœËœËœËœ ËœËœËœ. ËœËœËœËœËœËœ")
 		end
 	end
 
 function dmgetto(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /dmgetto [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /dmgetto [ID ËœËœËœËœËœËœ].", -1)
 		else
 		    sampSendChat("/prison "..id.." 80 DeathMatch in Getto")
 		end
@@ -160,201 +160,201 @@ function dmgetto(id)
 
 function dmslet(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /dmslet [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /dmslet [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 200 DeathMatch ˜˜ ˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 200 DeathMatch ËœËœ ËœËœËœËœËœ")
 		end
 	end
 
 function ezda(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /ezda [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /ezda [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 ˜˜˜˜ ˜˜ ˜˜")
+			sampSendChat("/prison "..id.." 10 ËœËœËœËœ ËœËœ ËœËœ")
 		end
 	end
 
 function copgetto(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /copgetto [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /copgetto [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 ˜˜˜ ˜ Getto")
+			sampSendChat("/prison "..id.." 60 ËœËœËœ Ëœ Getto")
 		end
 	end
 
 function offar(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /offar [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /offar [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 80 ˜˜˜ ˜˜ ˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 80 ËœËœËœ ËœËœ ËœËœËœËœËœËœ")
 		end
 	end
 
 function offkill(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /offkill [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /offkill [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 80 ˜˜˜ ˜˜ ˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 80 ËœËœËœ ËœËœ ËœËœËœËœËœ")
 		end
 	end
 
 function sbivstena(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /sbivstena [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /sbivstena [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 ˜˜˜ ˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 30 ËœËœËœ ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœ")
 		end
 	end
 
 function sbivplayer(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ + Warn - /sbivplayer [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ + Warn - /sbivplayer [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 ˜˜˜ ˜˜˜˜˜˜˜˜")
-			sampSendChat("/warn "..id.."  ˜˜˜ ˜˜˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 120 ËœËœËœ ËœËœËœËœËœËœËœËœ")
+			sampSendChat("/warn "..id.."  ËœËœËœ ËœËœËœËœËœËœËœËœ")
 		end
 	end
 
 function otvod(id)
 	if tonumber(id) == nil then
-		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ + Warn - /otvod [ID ˜˜˜˜˜˜].", -1)
+		sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ + Warn - /otvod [ID ËœËœËœËœËœËœ].", -1)
 	else
-		sampSendChat("/prison "..id.." 120 ˜˜˜˜˜˜")
-		sampSendChat("/warn "..id.."  ˜˜˜˜˜˜")
+		sampSendChat("/prison "..id.." 120 ËœËœËœËœËœËœ")
+		sampSendChat("/warn "..id.."  ËœËœËœËœËœËœ")
 	end
 end
 
 function nrpcop(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /nrpcop [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /nrpcop [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 ˜˜˜ ˜˜˜")
+			sampSendChat("/prison "..id.." 120 ËœËœËœ ËœËœËœ")
 		end
 	end
 
 function dbkov(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /dbvok [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /dbvok [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 360 DriveBy ˜˜˜˜˜˜/˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 360 DriveBy ËœËœËœËœËœËœ/ËœËœËœËœËœËœ")
 		end
 	end
 
 function sbivap(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /sbivap [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /sbivap [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 ˜˜˜˜ ˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 10 ËœËœËœËœ ËœËœËœËœËœËœ")
 		end
 	end
 
 function sbivtemp(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /sbivtemp [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /sbivtemp [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 ˜˜˜˜ ˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 30 ËœËœËœËœ ËœËœËœËœËœ")
 		end
 	end
 
 function ignor(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /ignor [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /ignor [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 ˜˜˜˜˜ RP ˜˜˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 60 ËœËœËœËœËœ RP ËœËœËœËœËœËœËœËœ")
 		end
 	end
 
 function ignorpr(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /ignorpr [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /ignorpr [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 60 ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 60 ËœËœËœËœËœ ËœËœËœËœËœËœ ËœËœËœËœËœËœ")
 		end
 	end
 
 function nrpcm(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /nrpcm [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /nrpcm [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 ˜˜˜ /cput - /mboot")
+			sampSendChat("/prison "..id.." 120 ËœËœËœ /cput - /mboot")
 		end
 	end
 
 function giftch(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /giftch [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /giftch [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 gift ˜˜ ˜˜˜˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 120 gift ËœËœ ËœËœËœËœËœËœËœËœËœ")
 		end
 	end
 
 function massnrp(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ + Warn - /massnrp [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ + Warn - /massnrp [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 120 ˜˜˜˜. ˜˜˜")
-			sampSendChat("/warn "..id.."  ˜˜˜˜. ˜˜˜")
+			sampSendChat("/prison "..id.." 120 ËœËœËœËœ. ËœËœËœ")
+			sampSendChat("/warn "..id.."  ËœËœËœËœ. ËœËœËœ")
 		end
 	end
 
 function stpas(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /stpas [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /stpas [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 ˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 30 ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœËœËœ")
 		end
 	end
 
 function spyo(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /spyo [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /spyo [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 /spy ˜ ˜˜˜. ˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 10 /spy Ëœ ËœËœËœ. ËœËœËœËœËœ")
 		end
 	end
 
 function prov(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /prov [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /prov [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 10 ˜˜˜˜˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 10 ËœËœËœËœËœËœËœËœËœËœ")
 		end
 	end
 
 function animsl(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /animsl [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /animsl [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 15 /anim ˜˜ ˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 15 /anim ËœËœ ËœËœËœËœËœ")
 		end
 	end
 
 function massdm(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /massdm [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /massdm [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 360 ˜˜˜˜. DeathMatch")
+			sampSendChat("/prison "..id.." 360 ËœËœËœËœ. DeathMatch")
 		end
 	end
 
 function massdb(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /massdb [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /massdb [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 360 ˜˜˜˜. DriveBy")
+			sampSendChat("/prison "..id.." 360 ËœËœËœËœ. DriveBy")
 		end
 	end
 
 function nrpaks(id)
 	if tonumber(id) == nil then
-			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜ - /nrpaks [ID ˜˜˜˜˜˜].", -1)
+			sampAddChatMessage("{f09205}[Aries-Help]: {FFFFFF}ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœ - /nrpaks [ID ËœËœËœËœËœËœ].", -1)
 		else
-			sampSendChat("/prison "..id.." 30 NRp ˜˜˜˜˜˜˜˜˜˜")
+			sampSendChat("/prison "..id.." 30 NRp ËœËœËœËœËœËœËœËœËœËœ")
 		end
 	end
 
 function chelp()
-	sampShowDialog(1338, "˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜", "{f00592}1.{FFFFFF} ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ Prison\n{f00592}2.{FFFFFF} ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ Mute\n{f00592}3.{FFFFFF} ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ Warn\n{f00592}4.{FFFFFF} ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ Ban\n{f00592}5.{FFFFFF} ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜\n{f00592}6.{FFFFFF} ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜", "˜˜˜˜˜˜˜", "˜˜˜˜˜˜˜", 2)
+	sampShowDialog(1338, "ËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœ", "{f00592}1.{FFFFFF} ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ Prison\n{f00592}2.{FFFFFF} ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ Mute\n{f00592}3.{FFFFFF} ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ Warn\n{f00592}4.{FFFFFF} ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ Ban\n{f00592}5.{FFFFFF} ËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ\n{f00592}6.{FFFFFF} ËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", 2)
 	lua_thread.create(commandhelp)
 end
 
@@ -363,22 +363,22 @@ function commandhelp()
 		wait(0)
 		local result, button, list, input = sampHasDialogRespond(1338)
 		if result and list == 0 and button == 1 then
-			sampShowDialog(1339, "˜˜˜˜. ˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜ Prison", "/dm - DeathMatch\n/db - DriveBy\n/dmgz - DeathMatch in GZ\n/sk - SpawnKill\n/rk - RevengeKill\n/tk - TeamKill\n/pg - PowerGaming\n/nrpoved - ˜˜˜ ˜˜˜˜˜˜˜˜˜\n/sbivt - ˜˜˜˜ ˜˜˜. ˜˜˜˜˜˜\n/dmgetto - ˜˜ ˜ ˜˜˜˜˜\n/dmslet - ˜˜ ˜˜ ˜˜˜˜˜\n/ezda - ˜˜˜˜ ˜˜ ˜˜\n/copgetto - ˜˜˜ ˜ ˜˜˜˜˜\n/offar - ˜˜˜ ˜˜ ˜˜˜˜˜˜\n/offkill - ˜˜˜ ˜˜ ˜˜˜˜˜(˜˜ ˜˜˜ ˜˜, ˜˜ ˜ ˜˜)\n/sbivstena - ˜˜˜ ˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜\n/sbivplayer - ˜˜˜ ˜˜˜˜˜˜˜˜\n/otvod - ˜˜˜˜˜˜(prison + warn)\n/nrpcop - ˜˜˜ ˜˜˜\n/dbkov - ˜˜ ˜˜˜˜ / ˜˜˜˜˜\n/sbivap - ˜˜˜˜ ˜˜˜˜˜˜\n/sivtemp - ˜˜˜˜ ˜˜˜˜˜\n/ignor - ˜˜˜˜˜ RP ˜˜˜˜˜˜˜˜\n/ignorpr - ˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜\n/nrpcm - ˜˜˜ /mboot ˜ /cput\n/giftch - ˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜\n/massnrp - ˜˜˜˜. ˜˜˜ (prison + warn)\n/stpas - ˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜˜˜\n/spyo - /spy ˜ ˜˜˜. ˜˜˜˜˜\n/prov - ˜˜˜˜˜˜˜˜˜˜\n/animsl - /anim ˜˜ ˜˜˜˜˜\n/massdm - ˜˜˜˜. ˜˜\n/massdb - ˜˜˜˜. ˜˜\n/nrpaks - ˜˜˜ ˜˜˜˜˜˜˜˜˜˜", "˜˜˜˜˜", "˜˜˜˜˜˜˜", 2)
+			sampShowDialog(1339, "ËœËœËœËœ. ËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœ Prison", "/dm - DeathMatch\n/db - DriveBy\n/dmgz - DeathMatch in GZ\n/sk - SpawnKill\n/rk - RevengeKill\n/tk - TeamKill\n/pg - PowerGaming\n/nrpoved - ËœËœËœ ËœËœËœËœËœËœËœËœËœ\n/sbivt - ËœËœËœËœ ËœËœËœ. ËœËœËœËœËœËœ\n/dmgetto - ËœËœ Ëœ ËœËœËœËœËœ\n/dmslet - ËœËœ ËœËœ ËœËœËœËœËœ\n/ezda - ËœËœËœËœ ËœËœ ËœËœ\n/copgetto - ËœËœËœ Ëœ ËœËœËœËœËœ\n/offar - ËœËœËœ ËœËœ ËœËœËœËœËœËœ\n/offkill - ËœËœËœ ËœËœ ËœËœËœËœËœ(ËœËœ ËœËœËœ ËœËœ, ËœËœ Ëœ ËœËœ)\n/sbivstena - ËœËœËœ ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœ\n/sbivplayer - ËœËœËœ ËœËœËœËœËœËœËœËœ\n/otvod - ËœËœËœËœËœËœ(prison + warn)\n/nrpcop - ËœËœËœ ËœËœËœ\n/dbkov - ËœËœ ËœËœËœËœ / ËœËœËœËœËœ\n/sbivap - ËœËœËœËœ ËœËœËœËœËœËœ\n/sivtemp - ËœËœËœËœ ËœËœËœËœËœ\n/ignor - ËœËœËœËœËœ RP ËœËœËœËœËœËœËœËœ\n/ignorpr - ËœËœËœËœËœ ËœËœËœËœËœËœ ËœËœËœËœËœËœ\n/nrpcm - ËœËœËœ /mboot Ëœ /cput\n/giftch - ËœËœËœËœ ËœËœ ËœËœËœËœËœËœËœËœËœ\n/massnrp - ËœËœËœËœ. ËœËœËœ (prison + warn)\n/stpas - ËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœËœËœ\n/spyo - /spy Ëœ ËœËœËœ. ËœËœËœËœËœ\n/prov - ËœËœËœËœËœËœËœËœËœËœ\n/animsl - /anim ËœËœ ËœËœËœËœËœ\n/massdm - ËœËœËœËœ. ËœËœ\n/massdb - ËœËœËœËœ. ËœËœ\n/nrpaks - ËœËœËœ ËœËœËœËœËœËœËœËœËœËœ", "ËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", 2)
 			lua_thread.create(noper)
 		elseif result and list == 1 and button == 1 then
-			sampShowDialog(1339, "˜˜˜˜. ˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜ Mute", "SpawnKill - /sk\n˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜ ˜˜˜˜˜ - /npvch\nPoweGaming - /pg\nDeathMatch - /dm\nDeathMatch in GreenZone - /dmzz\nNonRP PD - /ncop\n+C ˜ ˜˜˜˜˜˜ - /cw\n˜˜˜˜ ˜˜˜˜˜˜˜˜ - /asbiv\nCop in Ghetto - /copg\nTeamKill - /tk\nDriveBy - /db", "˜˜˜˜˜", "˜˜˜˜˜˜˜", 2)
+			sampShowDialog(1339, "ËœËœËœËœ. ËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœ Mute", "SpawnKill - /sk\nËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœ ËœËœ ËœËœËœËœËœËœËœ ËœËœËœËœËœ - /npvch\nPoweGaming - /pg\nDeathMatch - /dm\nDeathMatch in GreenZone - /dmzz\nNonRP PD - /ncop\n+C Ëœ ËœËœËœËœËœËœ - /cw\nËœËœËœËœ ËœËœËœËœËœËœËœËœ - /asbiv\nCop in Ghetto - /copg\nTeamKill - /tk\nDriveBy - /db", "ËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", 2)
 			lua_thread.create(noper)
 		elseif result and list == 2 and button == 1 then
-			sampShowDialog(1339, "˜˜˜˜. ˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜ Warn", "NonRP /tie - /ntie", "˜˜˜˜˜", "˜˜˜˜˜˜˜", 2)
+			sampShowDialog(1339, "ËœËœËœËœ. ËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœ Warn", "NonRP /tie - /ntie", "ËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", 2)
 			lua_thread.create(noper)
 		elseif result and list == 3 and button == 1 then
-			sampShowDialog(1339, "˜˜˜˜. ˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜ Ban", "˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ - /oskr\n˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ - /oskp\n˜˜˜˜ - /cheats", "˜˜˜˜˜", "˜˜˜˜˜˜˜", 2)
+			sampShowDialog(1339, "ËœËœËœËœ. ËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœ Ban", "ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœ - /oskr\nËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ - /oskp\nËœËœËœËœ - /cheats", "ËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", 2)
 			lua_thread.create(noper)
 		elseif result and list == 4 and button == 1 then
-			sampShowDialog(1339, "˜˜˜˜˜˜ ˜˜˜˜. ˜˜˜˜˜˜˜", "˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜ ˜˜˜˜ - /gh\n˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ - /ss\n˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜ ˜˜˜˜ - /ghc", "˜˜˜˜˜", "˜˜˜˜˜˜˜", 2)
+			sampShowDialog(1339, "ËœËœËœËœËœËœ ËœËœËœËœ. ËœËœËœËœËœËœËœ", "ËœËœËœËœËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœ Ëœ ËœËœËœËœ - /gh\nËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœ - /ss\nËœËœËœËœËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœ Ëœ ËœËœËœËœ - /ghc", "ËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", 2)
 			lua_thread.create(noper)
 		elseif result and list == 5 and button == 1 then
-			sampShowDialog(1339, "˜˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜˜", "˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ - {FF0000}Tom Costa\n˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜, ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜ - {ff007b}Hiroshi Miyazaki\n˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜ - {f00592}Aries RP Mobile.\n˜˜˜˜˜ ˜˜˜, ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜ - vk.com/himoore", "˜˜˜˜˜", "˜˜˜˜˜˜˜", 2)
+			sampShowDialog(1339, "ËœËœËœËœËœËœËœËœËœ Ëœ ËœËœËœËœËœËœËœËœËœ", "ËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ - {FF0000}Tom Costa\nËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœ, ËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœ - {ff007b}Hiroshi Miyazaki\nËœËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœËœ - {f00592}Aries RP Mobile.\nËœËœËœËœËœ ËœËœËœ, ËœËœËœËœËœËœËœËœËœËœËœ ËœËœËœ ËœËœËœËœËœËœËœËœËœ ËœËœËœËœËœËœËœËœËœËœËœ - vk.com/himoore", "ËœËœËœËœËœ", "ËœËœËœËœËœËœËœ", 2)
 			lua_thread.create(noper)
 		end
 	end
